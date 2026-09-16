@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Rock Paper Scissors</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+
+  <body>
+    <div class="game-container">
+      <h1>🪨 Rock Paper Scissors ✂️</h1>
+
+      <p class="subtitle">Choose your weapon!</p>
+
+      <!-- Score Board -->
+      <div class="score-board">
+        <div>
+          <h3>You</h3>
+          <p>{{ player_score }}</p>
+        </div>
+
+        <div>
+          <h3>Draws</h3>
+          <p>{{ draw_score }}</p>
+        </div>
+
+        <div>
+          <h3>Computer</h3>
+          <p>{{ computer_score }}</p>
+        </div>
+      </div>
+
+      <!-- Game Buttons -->
+      <form method="POST">
+        <button type="submit" name="choice" value="rock">🪨 Rock</button>
+
+        <button type="submit" name="choice" value="paper">📄 Paper</button>
+
+        <button type="submit" name="choice" value="scissors">
+          ✂️ Scissors
+        </button>
+      </form>
+
+      {% if result %}
+
+      <div class="result">
+        <h2>{{ result }}</h2>
+
+        <div class="choices">
+          <div>
+            <h3>You</h3>
+            <p>{{ player_choice }}</p>
+          </div>
+
+          <div>
+            <h3>Computer</h3>
+            <p>{{ computer_choice }}</p>
+          </div>
+        </div>
+      </div>
+
+      {% endif %}
+
+      <!-- Reset Button -->
+      <a href="/reset" class="reset-button"> Reset Score </a>
+    </div>
+  </body>
+</html>
